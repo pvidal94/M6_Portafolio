@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Panel de Control Municipal</h2>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Presupuesto Vigente Total</div>
+            <div class="card-body">
+                <h3 class="card-title">${{ total_presupuesto }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-header">Actividades Pendientes</div>
+            <div class="card-body">
+                <h3 class="card-title">{{ actividades_pendientes }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-header">Actividades Atrasadas</div>
+            <div class="card-body">
+                <h3 class="card-title">{{ actividades_atrasadas }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

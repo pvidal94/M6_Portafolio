@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h2 class="fw-bold text-primary">Memoria Técnica del Proyecto</h2>
+            <p class="text-muted">Evidencia de competencias y justificación arquitectónica - Dashboard I. Municipalidad de Puyehue</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="accordion shadow-sm" id="accordionMemoria">
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            <strong>1. Fundamentación: ¿Por qué Django?</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionMemoria">
+                        <div class="accordion-body">
+                            <p>Se seleccionó <strong>Django</strong> por su arquitectura "baterías incluidas", ideal para entornos gubernamentales que requieren:</p>
+                            <ul>
+                                <li><strong>Seguridad Nativa:</strong> Protección contra SQL Injection y CSRF para resguardar datos presupuestarios.</li>
+                                <li><strong>ORM Robusto:</strong> Abstracción de base de datos que permite gestionar modelos complejos sin SQL crudo.</li>
+                                <li><strong>Escalabilidad:</strong> Arquitectura MVT que permite agregar módulos (Salud, Obras) sin refactorizar el núcleo.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            <strong>2. Configuración y Estructura</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionMemoria">
+                        <div class="accordion-body">
+                            <p>El proyecto sigue los estándares de la industria Python:</p>
+                            <ul>
+                                <li><code>django-admin startproject</code>: Configuración raíz y gestión de settings.</li>
+                                <li><code>python manage.py startapp</code>: Modularización de la lógica de negocio en la app <em>gestion_municipal</em>.</li>
+                                <li>Uso de <strong>Variables de Entorno</strong> y separación de archivos estáticos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            <strong>3. Motor de Plantillas (Frontend Dinámico)</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionMemoria">
+                        <div class="accordion-body">
+                            <p>Se implementó el sistema de templating de Django (DTL) para renderizar datos en tiempo real:</p>
+                            <ul>
+                                <li>Uso de <strong>Herencia de Plantillas</strong> (<code>extends 'base.html'</code>) para mantener consistencia visual.</li>
+                                <li>Bucles <code>for</code> para iterar sobre listados de actividades y presupuestos.</li>
+                                <li>Filtros de plantilla para formateo de fechas y lógica condicional para semaforización de estados (badges de colores).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                            <strong>4. Procesamiento de Formularios</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionMemoria">
+                        <div class="accordion-body">
+                            <p>Se utilizan <code>ModelForms</code> para garantizar la integridad de los datos:</p>
+                            <ul>
+                                <li>Validación automática de tipos de datos (Fechas, Textos, Números).</li>
+                                <li>Protección CSRF en todos los formularios POST.</li>
+                                <li>Mapeo directo entre la entrada del usuario y el modelo relacional de base de datos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                            <strong>5. Autenticación y Permisos</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionMemoria">
+                        <div class="accordion-body">
+                            <p>Implementación del módulo <code>django.contrib.auth</code>:</p>
+                            <ul>
+                                <li>Control de sesiones seguro.</li>
+                                <li>Uso del decorador <code>@login_required</code> para proteger vistas sensibles.</li>
+                                <li>Gestión de usuarios y contraseñas mediante hashing seguro (PBKDF2).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+                            <strong>6. Panel de Administración Personalizado</strong>
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionMemoria">
+                        <div class="accordion-body">
+                            <p>Se extendió el admin site nativo para uso municipal:</p>
+                            <ul>
+                                <li>Filtros laterales (<code>list_filter</code>) por Estado y Responsable.</li>
+                                <li>Buscadores (<code>search_fields</code>) para localización rápida de proyectos.</li>
+                                <li>Funciones personalizadas para visualización gráfica de estados dentro del panel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-4 text-center">
+                <a href="{% url 'dashboard' %}" class="btn btn-outline-primary">Volver al Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
